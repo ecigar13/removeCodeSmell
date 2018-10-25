@@ -1,6 +1,6 @@
-package movies;
+package genre;
 
-public enum Genre {
+public enum Genre implements GenreInterface{
   CHILREN(2), ACTION(3), HORROR(4), ROMANCE(5);
 
   private int numVal;

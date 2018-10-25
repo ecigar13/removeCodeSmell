@@ -1,6 +1,10 @@
-package movies;
+package concreteClasses;
 
-public class MovieRegular implements Movie, Comparable<Movie> {
+import genre.Genre;
+import itemInterfaces.ItemInterface;
+import itemInterfaces.MovieAbtractClass;
+
+public class MovieRegular extends MovieAbtractClass {
 
   private String title;
   private int daysRented = 0;
@@ -22,11 +26,6 @@ public class MovieRegular implements Movie, Comparable<Movie> {
   }
 
   @Override
-  public String getTitle() {
-    return this.title;
-  }
-
-  @Override
   public double calculateAmount() {
     double thisAmount = basePrice;
     if (this.daysRented > baseDay) {
@@ -36,18 +35,10 @@ public class MovieRegular implements Movie, Comparable<Movie> {
   }
 
   @Override
-  public boolean isGenre(Genre genre) {
-    return genres.contains(genre);
+  public int compareTo(ItemInterface o) {
+    // TODO Auto-generated method stub
+    return 0;
   }
 
-  @Override
-  public int getDaysRented() {
-    return this.daysRented;
-  }
-
-  @Override
-  public int compareTo(Movie o) {
-    return this.getTitle().compareTo(o.getTitle());
-  }
 
 }

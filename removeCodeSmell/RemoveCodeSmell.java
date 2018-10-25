@@ -1,11 +1,11 @@
 package removeCodeSmell;
 
-import actions.Rental;
+import actions.Transaction;
+import concreteClasses.MovieChildren;
+import concreteClasses.MovieNew;
+import concreteClasses.MovieRegular;
 import customer.Customer;
-import movies.Genre;
-import movies.MovieChildren;
-import movies.MovieNew;
-import movies.MovieRegular;
+import genre.Genre;
 
 public class RemoveCodeSmell {
 
@@ -14,7 +14,7 @@ public class RemoveCodeSmell {
     //create customer
     Customer customer = new Customer("Thomas", 1);
     //create rental
-    Rental rental = new Rental();
+    Transaction rental = new Transaction();
     //create movie
     rental.addMovie(new MovieNew("Starbucks Wars", 3, Genre.HORROR));
     rental.addMovie(new MovieChildren("Peter Pot", 5, Genre.CHILREN));

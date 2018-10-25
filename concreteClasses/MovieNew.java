@@ -1,6 +1,9 @@
-package movies;
+package concreteClasses;
 
-public class MovieNew implements Movie, Comparable<Movie> {
+import genre.Genre;
+import itemInterfaces.MovieAbtractClass;
+
+public class MovieNew implements MovieAbtractClass, Comparable<MovieAbtractClass> {
 
   private String title;
   private int daysRented = 0;
@@ -40,7 +43,7 @@ public class MovieNew implements Movie, Comparable<Movie> {
   }
 
   @Override
-  public int compareTo(Movie o) {
+  public int compareTo(MovieAbtractClass o) {
     return this.getTitle().compareTo(o.getTitle());
   }
 }

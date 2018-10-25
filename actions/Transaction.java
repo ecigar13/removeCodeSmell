@@ -2,21 +2,22 @@ package actions;
 
 import java.util.TreeSet;
 
-import movies.*;
+import concreteClasses.*;
+import itemInterfaces.MovieAbtractClass;
 
-public class Rental {
-  private TreeSet<Movie> rentals = new TreeSet<Movie>();
+public class Transaction {
+  private TreeSet<MovieAbtractClass> rentals = new TreeSet<MovieAbtractClass>();
   private int frequentRenterPoint = 0;
 
   public int getFrequentRenterPoint() {
     return frequentRenterPoint;
   }
 
-  public TreeSet<Movie> getRentals() {
+  public TreeSet<MovieAbtractClass> getRentals() {
     return rentals;
   }
 
-  public boolean addMovie(Movie m) {
+  public boolean addMovie(MovieAbtractClass m) {
     return rentals.add(m);
   }
 
@@ -25,7 +26,7 @@ public class Rental {
    */
   public double calculateTotal() {
     double total = 0.0;
-    for (Movie m : rentals) {
+    for (MovieAbtractClass m : rentals) {
       total += m.calculateAmount();
     }
     return total;
@@ -33,7 +34,7 @@ public class Rental {
 
   public String toXML() {
     StringBuffer sBuffer = new StringBuffer();
-    for (Movie movie : rentals) {
+    for (MovieAbtractClass movie : rentals) {
       sBuffer.append("<movie>" + movie.getTitle() + "</movie>" + "<daysRented>" + movie.getDaysRented() + "</daysRented>");
       sBuffer.append("<amount>" + String.format("%9.2f", movie.calculateAmount()) + "</amount>" + '\n');
     }
@@ -44,13 +45,13 @@ public class Rental {
 
   public int calculateTotalPoint() {
     int total=0;
-    for (Movie m : rentals) {
+    for (MovieAbtractClass m : rentals) {
       total += calculateFrequentRenterPoint(m);
     }
     return total;
   }
   
-  public int calculateFrequentRenterPoint(Movie m) {
+  public int calculateFrequentRenterPoint(MovieAbtractClass m) {
     int point = 1;
 
     // add bonus for a two day new release rental

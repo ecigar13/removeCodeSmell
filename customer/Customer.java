@@ -1,11 +1,12 @@
 package customer;
 
-import actions.Rental;
-import movies.*;
+import actions.Transaction;
+import concreteClasses.*;
+import itemInterfaces.MovieAbtractClass;
 
 public class Customer {
   private String name;
-  private Rental rental;
+  private Transaction rental;
   private int frequentRenterPoints;
 
   public Customer(String name, int frequentRenterPoints) {
@@ -13,7 +14,7 @@ public class Customer {
     this.frequentRenterPoints = frequentRenterPoints;
   }
 
-  public void setRental(Rental arg) {
+  public void setRental(Transaction arg) {
     this.rental = arg;
   }
 
@@ -31,7 +32,7 @@ public class Customer {
     result += "You have " + frequentRenterPoints +" point"+ "\n";
     double totalAmount = 0.0;
     
-    for(Movie m : rental.getRentals()) {
+    for(MovieAbtractClass m : rental.getRentals()) {
       double thisAmount = 0.0;
       thisAmount += m.calculateAmount(); 
       result += "\t" + m.getTitle() + "\t" + String.format("%9.2f", thisAmount);

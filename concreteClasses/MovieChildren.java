@@ -1,9 +1,10 @@
-package movies;
+package concreteClasses;
 
-public class MovieChildren implements Movie, Comparable<Movie> {
+import genre.Genre;
+import itemInterfaces.ItemInterface;
+import itemInterfaces.MovieAbtractClass;
 
-  private String title;
-  private int daysRented = 0;
+public class MovieChildren extends MovieAbtractClass {
 
   private double pricePerDay = 1.5;
   private double basePrice = 3.0;
@@ -12,18 +13,13 @@ public class MovieChildren implements Movie, Comparable<Movie> {
   public MovieChildren(String title, int daysRented, Genre... genreList) {
     this.title = title;
     this.daysRented = daysRented;
-    for(Genre g: genreList) {
+    for (Genre g : genreList) {
       genres.add(g);
     }
   }
 
   public void setDaysRented(int daysRented) {
     this.daysRented = daysRented;
-  }
-
-  @Override
-  public String getTitle() {
-    return this.title;
   }
 
   @Override
@@ -36,18 +32,9 @@ public class MovieChildren implements Movie, Comparable<Movie> {
   }
 
   @Override
-  public boolean isGenre(Genre genre) {
-    return genres.contains(genre);
-  }
-
-  @Override
-  public int getDaysRented() {
-    return this.daysRented;
-  }
-
-  @Override
-  public int compareTo(Movie o) {
-    return this.getTitle().compareTo(o.getTitle());
+  public int compareTo(ItemInterface o) {
+    // TODO Auto-generated method stub
+    return 0;
   }
 
 }
