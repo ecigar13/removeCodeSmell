@@ -3,8 +3,11 @@ package itemInterfaces;
 import genre.Genre;
 import strategies.StrategyInterface;
 
-public abstract class MovieAbtractClass implements ItemInterface {
+public abstract class MusicCdAbstract implements ItemInterface {
+  protected String artist;
   protected int daysRented;
+  protected int numberAvailable;
+  protected double popularityFactor;
   protected double sellPrice;
   protected StrategyInterface strategy;
   protected String title;
@@ -14,8 +17,20 @@ public abstract class MovieAbtractClass implements ItemInterface {
     return this.getTitle().compareTo(o.getTitle());
   }
 
+  public String getArtist() {
+    return artist;
+  }
+
   public int getDaysRented() {
-    return this.daysRented;
+    return daysRented;
+  }
+
+  public int getNumberAvailable() {
+    return numberAvailable;
+  }
+
+  public double getPopularityFactor() {
+    return popularityFactor;
   }
 
   public double getSellPrice() {
@@ -34,8 +49,20 @@ public abstract class MovieAbtractClass implements ItemInterface {
     return genres.contains(genre);
   }
 
+  public void setArtist(String artist) {
+    this.artist = artist;
+  }
+
   public void setDaysRented(int daysRented) {
     this.daysRented = daysRented;
+  }
+
+  public void setNumberAvailable(int numberAvailable) {
+    this.numberAvailable = numberAvailable;
+  }
+
+  public void setPopularityFactor(double popularityFactor) {
+    this.popularityFactor = popularityFactor;
   }
 
   public void setSellPrice(double sellPrice) {

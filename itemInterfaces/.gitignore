@@ -4,3 +4,6 @@
 /VideoGameInterface.class
 /ItemInterface.class
 /MovieAbtractClass.class
+/BookAbstractClass.class
+/MusicCdAbstract.class
+/VideoGameAbstract.class

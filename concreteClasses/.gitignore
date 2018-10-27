@@ -8,3 +8,9 @@
 /MusicCdInterface.class
 /BookInterface.class
 /MovieGenre.class
+/NewBook.class
+/NewMusic.class
+/BookNew.class
+/MusicNew.class
+/VideoGameFamily.class
+/MusicPop.class

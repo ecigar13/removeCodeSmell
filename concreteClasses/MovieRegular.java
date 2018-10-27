@@ -1,25 +1,19 @@
 package concreteClasses;
 
 import genre.Genre;
-import itemInterfaces.ItemInterface;
 import itemInterfaces.MovieAbtractClass;
 
 public class MovieRegular extends MovieAbtractClass {
 
-  private String title;
-  private int daysRented = 0;
-
-  public void setDaysRented(int daysRented) {
-    this.daysRented = daysRented;
-  }
-
-  private double pricePerDay = 1.5;
-  private double basePrice = 2.0;
   private int baseDay = 2;
+  private double basePrice = 2.0;
+  private double pricePerDay = 1.5;
+  protected double sellPrice;
 
-  public MovieRegular(String title, int daysRented, Genre... genreList) {
+  public MovieRegular(String title, int daysRented, double sellPrice, Genre... genreList) {
     this.title = title;
     this.daysRented = daysRented;
+    this.sellPrice = sellPrice;
     for (Genre g : genreList) {
       genres.add(g);
     }
@@ -34,11 +28,8 @@ public class MovieRegular extends MovieAbtractClass {
     return thisAmount;
   }
 
-  @Override
-  public int compareTo(ItemInterface o) {
-    // TODO Auto-generated method stub
-    return 0;
+  public void setDaysRented(int daysRented) {
+    this.daysRented = daysRented;
   }
-
 
 }

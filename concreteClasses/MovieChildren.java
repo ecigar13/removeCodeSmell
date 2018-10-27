@@ -5,21 +5,18 @@ import itemInterfaces.ItemInterface;
 import itemInterfaces.MovieAbtractClass;
 
 public class MovieChildren extends MovieAbtractClass {
-
-  private double pricePerDay = 1.5;
-  private double basePrice = 3.0;
   private int baseDay = 3;
+  private double basePrice = 3.0;
+  private double pricePerDay = 1.5;
+  protected double sellPrice;
 
-  public MovieChildren(String title, int daysRented, Genre... genreList) {
+  public MovieChildren(String title, int daysRented, double sellPrice, Genre... genreList) {
     this.title = title;
     this.daysRented = daysRented;
+    this.sellPrice = sellPrice;
     for (Genre g : genreList) {
       genres.add(g);
     }
-  }
-
-  public void setDaysRented(int daysRented) {
-    this.daysRented = daysRented;
   }
 
   @Override
@@ -29,12 +26,6 @@ public class MovieChildren extends MovieAbtractClass {
       thisAmount += (this.daysRented - baseDay) * pricePerDay;
     }
     return thisAmount;
-  }
-
-  @Override
-  public int compareTo(ItemInterface o) {
-    // TODO Auto-generated method stub
-    return 0;
   }
 
 }
