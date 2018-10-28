@@ -10,6 +10,7 @@ import order.Order;
 import order.OrderDiscountDecorator;
 import strategies.BuyStrategy;
 import strategies.RentStrategy;
+import toXML.OrderToXMLDecorator;
 
 public class Main {
 
@@ -19,13 +20,14 @@ public class Main {
     Customer customer = new Customer("Thomas", 1);
     Order transaction = new Order();
 
+    System.out.println("Applying item level discount: ");
     ItemInterface item = new MovieNew("Starbucks Wars", 3, 20.0, Genre.HORROR, Genre.ROMANCE);
     item.setStrategy(new RentStrategy());
     ItemDiscountDecorator discountedItem = new ItemDiscountDecorator(item);
     discountedItem.setDiscountPercent(30.0);
     transaction.addItem(discountedItem);
 
-    item = new MovieChildren("Peter Pot", 5, 30.0, Genre.CHILREN);
+    item = new MovieChildren("Peter Pots and Pans", 5, 30.0, Genre.CHILREN);
     item.setStrategy(new BuyStrategy());
 
     discountedItem = new ItemDiscountDecorator(item);
@@ -42,19 +44,23 @@ public class Main {
     // assign transaction to customer
     customer.setRental(transaction);
 
-    System.out.println("Applying statement level discount: ");
     OrderDiscountDecorator discountedOrder = new OrderDiscountDecorator(transaction);
     discountedOrder.setDiscountPercentage(10.0);
     System.out.println(customer.statement());
 
+    System.out.println("Applying 10% statement discount: ");
     // assign discounted/decorated transaction to customer
     customer.setRental(discountedOrder);
 
-    // print in XML
     System.out.println(customer.statement());
+    System.out.println("The number of point changes because statement() was called twice for demonstration purpose.");
+
+    // print in XML
+
+    OrderToXMLDecorator xmlOrder = new OrderToXMLDecorator(discountedOrder);
     System.out.println();
     System.out.println(customer.toXML());
-    System.out.println(transaction.toXML());
+    System.out.println(xmlOrder.toXML());
 
   }
 

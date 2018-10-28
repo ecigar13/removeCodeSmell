@@ -1,5 +1,7 @@
 package removeCodeSmell;
 
+import com.sun.swing.internal.plaf.metal.resources.metal;
+
 import itemInterfaces.ItemInterface;
 import order.Order;
 import order.OrderInterface;
@@ -37,7 +39,6 @@ public class Customer {
     StringBuffer result = new StringBuffer();
     result.append("Rental record for " + getName() + "\n");
     result.append("You have " + frequentRenterPoints + " point" + "\n");
-    double totalAmount = 0.0;
 
     result.append("Items in cart: \n");
     for (ItemInterface m : rental.getRentals()) {
@@ -46,13 +47,13 @@ public class Customer {
       result.append(String.format("%30s", m.getTitle()) + "\t\t" + String.format("%6.2f", thisAmount));
       result.append(m.getDaysRented() + "\n");
       // calculate amounts for each line
-      totalAmount += thisAmount;
     }
 
     this.frequentRenterPoints += rental.calculateTotalPoint();
 
     // add footer lines
-    result.append(String.format("%30s", "Amount owed is ") + "\t\t" + String.format("%6.2f", totalAmount) + "\n");
+    result.append(
+        String.format("%30s", "Amount owed is ") + "\t\t" + String.format("%6.2f", rental.calculateTotal()) + "\n");
     result.append("You earned " + String.valueOf(rental.calculateTotalPoint()) + " frequent renter points.\n");
     result.append("You have " + frequentRenterPoints + " point(s)." + "\n");
     return result.toString();
