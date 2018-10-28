@@ -1,11 +1,12 @@
-package customer;
+package removeCodeSmell;
 
-import actions.CustomerOrder;
 import itemInterfaces.ItemInterface;
+import order.Order;
+import order.OrderInterface;
 
 public class Customer {
   private String name;
-  private CustomerOrder rental;
+  private OrderInterface rental;
   private int frequentRenterPoints;
 
   public Customer(String name, int frequentRenterPoints) {
@@ -19,7 +20,7 @@ public class Customer {
    * 
    * @param arg
    */
-  public void setRental(CustomerOrder arg) {
+  public void setRental(OrderInterface arg) {
     this.rental = arg;
   }
 
@@ -34,14 +35,15 @@ public class Customer {
    */
   public String statement() {
     StringBuffer result = new StringBuffer();
-    result.append("Rental Record for " + getName() + "\n");
+    result.append("Rental record for " + getName() + "\n");
     result.append("You have " + frequentRenterPoints + " point" + "\n");
     double totalAmount = 0.0;
 
+    result.append("Items in cart: \n");
     for (ItemInterface m : rental.getRentals()) {
       double thisAmount = 0.0;
       thisAmount += m.calculateAmount();
-      result.append(m.getTitle() + "\t" + String.format("%9.2f", thisAmount));
+      result.append(String.format("%30s", m.getTitle()) + "\t\t" + String.format("%6.2f", thisAmount));
       result.append(m.getDaysRented() + "\n");
       // calculate amounts for each line
       totalAmount += thisAmount;
@@ -50,9 +52,9 @@ public class Customer {
     this.frequentRenterPoints += rental.calculateTotalPoint();
 
     // add footer lines
-    result.append("Amount owed is " + String.format("%9.2f", totalAmount) + "\n");
-    result.append("You earned " + String.valueOf(rental.calculateTotalPoint()) + " frequent renter points\n");
-    result.append("You have " + frequentRenterPoints + " point" + "\n");
+    result.append(String.format("%30s", "Amount owed is ") + "\t\t" + String.format("%6.2f", totalAmount) + "\n");
+    result.append("You earned " + String.valueOf(rental.calculateTotalPoint()) + " frequent renter points.\n");
+    result.append("You have " + frequentRenterPoints + " point(s)." + "\n");
     return result.toString();
   }
 

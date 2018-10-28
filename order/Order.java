@@ -1,11 +1,11 @@
-package actions;
+package order;
 
 import java.util.TreeSet;
 
-import concreteClasses.*;
+import itemClasses.*;
 import itemInterfaces.ItemInterface;
 
-public class CustomerOrder {
+public class Order implements OrderInterface {
   private TreeSet<ItemInterface> rentals = new TreeSet<ItemInterface>();
   private int frequentRenterPoint = 0;
 
@@ -21,7 +21,7 @@ public class CustomerOrder {
     return rentals.add(m);
   }
 
-  /*
+  /**
    * Calculate price based on the number of days.
    */
   public double calculateTotal() {
@@ -37,7 +37,7 @@ public class CustomerOrder {
     for (ItemInterface movie : rentals) {
       sBuffer
           .append("<movie>" + movie.getTitle() + "</movie>" + "<daysRented>" + movie.getDaysRented() + "</daysRented>");
-      sBuffer.append("<amount>" + String.format("%9.2f", movie.calculateAmount()) + "</amount>" + '\n');
+      sBuffer.append("<amount>" + movie.calculateAmount() + "</amount>" + '\n');
     }
 
     sBuffer.append("<total>" + calculateTotal() + "</total>");

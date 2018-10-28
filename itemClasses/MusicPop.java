@@ -1,4 +1,4 @@
-package concreteClasses;
+package itemClasses;
 
 import genre.Genre;
 import itemInterfaces.MusicCdAbstract;
