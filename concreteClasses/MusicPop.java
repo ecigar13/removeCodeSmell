@@ -16,12 +16,15 @@ public class MusicPop extends MusicCdAbstract {
     for (Genre g : genreList) {
       genres.add(g);
     }
+
+    baseDay = 2;
+    basePrice = 2.0;
+    pricePerDay = 1.5;
   }
 
   @Override
   public double calculateAmount() {
-
-    return 0;
+    return strategy.calculateAmount(this);
   }
 
 }

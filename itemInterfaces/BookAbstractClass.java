@@ -5,9 +5,13 @@ import strategies.StrategyInterface;
 
 public abstract class BookAbstractClass implements ItemInterface {
   protected String author;
+  protected int baseDay;
+  protected double basePrice;
   protected int daysRented;
   protected int numberAvailable;
+  protected double pricePerDay;
   protected double sellPrice;
+
   protected StrategyInterface strategy;
 
   protected String title;
@@ -21,6 +25,14 @@ public abstract class BookAbstractClass implements ItemInterface {
     return author;
   }
 
+  public int getBaseDay() {
+    return baseDay;
+  }
+
+  public double getBasePrice() {
+    return basePrice;
+  }
+
   public int getDaysRented() {
     return daysRented;
   }
@@ -29,9 +41,14 @@ public abstract class BookAbstractClass implements ItemInterface {
     return numberAvailable;
   }
 
+  public double getPricePerDay() {
+    return pricePerDay;
+  }
+
   public double getSellPrice() {
     return sellPrice;
   }
+
   public StrategyInterface getStrategy() {
     return strategy;
   }

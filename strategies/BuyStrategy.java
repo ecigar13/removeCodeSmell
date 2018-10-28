@@ -8,7 +8,7 @@ public class BuyStrategy implements StrategyInterface {
   }
 
   @Override
-  public double calculatePrice(ItemInterface i) {
+  public double calculateAmount(ItemInterface i) {
     return i.getSellPrice();
   }
 

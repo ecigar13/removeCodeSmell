@@ -5,11 +5,15 @@ import strategies.StrategyInterface;
 
 public abstract class MusicCdAbstract implements ItemInterface {
   protected String artist;
+  protected int baseDay;
+  protected double basePrice;
   protected int daysRented;
   protected int numberAvailable;
   protected double popularityFactor;
+  protected double pricePerDay;
   protected double sellPrice;
   protected StrategyInterface strategy;
+
   protected String title;
 
   @Override
@@ -19,6 +23,14 @@ public abstract class MusicCdAbstract implements ItemInterface {
 
   public String getArtist() {
     return artist;
+  }
+
+  public int getBaseDay() {
+    return baseDay;
+  }
+
+  public double getBasePrice() {
+    return basePrice;
   }
 
   public int getDaysRented() {
@@ -31,6 +43,10 @@ public abstract class MusicCdAbstract implements ItemInterface {
 
   public double getPopularityFactor() {
     return popularityFactor;
+  }
+
+  public double getPricePerDay() {
+    return pricePerDay;
   }
 
   public double getSellPrice() {

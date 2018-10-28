@@ -5,10 +5,6 @@ import itemInterfaces.ItemInterface;
 import itemInterfaces.MovieAbtractClass;
 
 public class MovieChildren extends MovieAbtractClass {
-  private int baseDay = 3;
-  private double basePrice = 3.0;
-  private double pricePerDay = 1.5;
-  protected double sellPrice;
 
   public MovieChildren(String title, int daysRented, double sellPrice, Genre... genreList) {
     this.title = title;
@@ -17,15 +13,14 @@ public class MovieChildren extends MovieAbtractClass {
     for (Genre g : genreList) {
       genres.add(g);
     }
+    baseDay = 3;
+    basePrice = 3.0;
+    pricePerDay = 1.5;
   }
 
   @Override
   public double calculateAmount() {
-    double thisAmount = basePrice;
-    if (this.daysRented > baseDay) {
-      thisAmount += (this.daysRented - baseDay) * pricePerDay;
-    }
-    return thisAmount;
+    return strategy.calculateAmount(this);
   }
 
 }

@@ -4,9 +4,15 @@ import genre.Genre;
 import strategies.StrategyInterface;
 
 public abstract class MovieAbtractClass implements ItemInterface {
+  protected int baseDay;
+  protected double basePrice;
   protected int daysRented;
+  protected double pricePerDay;
+
   protected double sellPrice;
+
   protected StrategyInterface strategy;
+
   protected String title;
 
   @Override
@@ -14,8 +20,20 @@ public abstract class MovieAbtractClass implements ItemInterface {
     return this.getTitle().compareTo(o.getTitle());
   }
 
+  public int getBaseDay() {
+    return baseDay;
+  }
+
+  public double getBasePrice() {
+    return basePrice;
+  }
+
   public int getDaysRented() {
     return this.daysRented;
+  }
+
+  public double getPricePerDay() {
+    return pricePerDay;
   }
 
   public double getSellPrice() {
@@ -41,7 +59,6 @@ public abstract class MovieAbtractClass implements ItemInterface {
   public void setSellPrice(double sellPrice) {
     this.sellPrice = sellPrice;
   }
-
   public void setStrategy(StrategyInterface strategy) {
     this.strategy = strategy;
   }

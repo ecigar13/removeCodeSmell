@@ -3,21 +3,21 @@ package actions;
 import java.util.TreeSet;
 
 import concreteClasses.*;
-import itemInterfaces.MovieAbtractClass;
+import itemInterfaces.ItemInterface;
 
-public class Transaction {
-  private TreeSet<MovieAbtractClass> rentals = new TreeSet<MovieAbtractClass>();
+public class CustomerOrder {
+  private TreeSet<ItemInterface> rentals = new TreeSet<ItemInterface>();
   private int frequentRenterPoint = 0;
 
   public int getFrequentRenterPoint() {
     return frequentRenterPoint;
   }
 
-  public TreeSet<MovieAbtractClass> getRentals() {
+  public TreeSet<ItemInterface> getRentals() {
     return rentals;
   }
 
-  public boolean addMovie(MovieAbtractClass m) {
+  public boolean addItem(ItemInterface m) {
     return rentals.add(m);
   }
 
@@ -26,7 +26,7 @@ public class Transaction {
    */
   public double calculateTotal() {
     double total = 0.0;
-    for (MovieAbtractClass m : rentals) {
+    for (ItemInterface m : rentals) {
       total += m.calculateAmount();
     }
     return total;
@@ -34,24 +34,25 @@ public class Transaction {
 
   public String toXML() {
     StringBuffer sBuffer = new StringBuffer();
-    for (MovieAbtractClass movie : rentals) {
-      sBuffer.append("<movie>" + movie.getTitle() + "</movie>" + "<daysRented>" + movie.getDaysRented() + "</daysRented>");
+    for (ItemInterface movie : rentals) {
+      sBuffer
+          .append("<movie>" + movie.getTitle() + "</movie>" + "<daysRented>" + movie.getDaysRented() + "</daysRented>");
       sBuffer.append("<amount>" + String.format("%9.2f", movie.calculateAmount()) + "</amount>" + '\n');
     }
-    
-    sBuffer.append("<total>"  + String.format("%9.2f", calculateTotal()) + "</total>");
+
+    sBuffer.append("<total>" + calculateTotal() + "</total>");
     return sBuffer.toString();
   }
 
   public int calculateTotalPoint() {
-    int total=0;
-    for (MovieAbtractClass m : rentals) {
+    int total = 0;
+    for (ItemInterface m : rentals) {
       total += calculateFrequentRenterPoint(m);
     }
     return total;
   }
-  
-  public int calculateFrequentRenterPoint(MovieAbtractClass m) {
+
+  public int calculateFrequentRenterPoint(ItemInterface m) {
     int point = 1;
 
     // add bonus for a two day new release rental

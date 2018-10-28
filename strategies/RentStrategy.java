@@ -8,8 +8,12 @@ public class RentStrategy implements StrategyInterface {
   }
 
   @Override
-  public double calculatePrice(ItemInterface i) {
-    return 0;
+  public double calculateAmount(ItemInterface i) {
+    double thisAmount = i.getBasePrice();
+    if (i.getDaysRented() > i.getBaseDay()) {
+      thisAmount += (i.getDaysRented() - i.getBaseDay()) * i.getPricePerDay();
+    }
+    return thisAmount;
   }
 
 }

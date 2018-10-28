@@ -20,4 +20,11 @@ public interface ItemInterface extends Comparable<ItemInterface> {
 
   public double getSellPrice();
 
+  public double getPricePerDay();
+
+  public double getBasePrice();
+
+  public int getDaysRented();
+
+  public int getBaseDay();
 }

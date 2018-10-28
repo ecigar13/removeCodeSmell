@@ -12,12 +12,15 @@ public class VideoGameFamily extends VideoGameAbstract {
     for (Genre g : genreList) {
       genres.add(g);
     }
+
+    baseDay = 7;
+    basePrice = 6.0;
+    pricePerDay = 2.5;
   }
 
   @Override
   public double calculateAmount() {
-    // TODO Auto-generated method stub
-    return 0;
+    return strategy.calculateAmount(this);
   }
 
 }

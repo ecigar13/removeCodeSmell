@@ -1,7 +1,7 @@
 package genre;
 
 public enum Genre implements GenreInterface{
-  CHILREN(2), ACTION(3), HORROR(4), ROMANCE(5);
+  ACTION(3), CHILREN(2), HORROR(4), NERD(1), ROMANCE(5);
 
   private int numVal;
 
