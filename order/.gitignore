@@ -1,3 +1,6 @@
 /Order.class
 /OrderInterface.class
 /OrderDiscountDecorator.class
+/OrderToXMLDecorator.class
+/OrderComposite.class
+/OrderAbstractClass.class

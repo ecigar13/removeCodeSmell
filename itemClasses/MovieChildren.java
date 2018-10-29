@@ -1,7 +1,6 @@
 package itemClasses;
 
 import genre.Genre;
-import itemInterfaces.ItemInterface;
 import itemInterfaces.MovieAbtractClass;
 
 public class MovieChildren extends MovieAbtractClass {
