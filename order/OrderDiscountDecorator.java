@@ -46,8 +46,8 @@ public class OrderDiscountDecorator implements OrderInterface {
   }
 
   @Override
-  public TreeSet<ItemInterface> getRentals() {
-    return order.getRentals();
+  public TreeSet<ItemInterface> getItems() {
+    return order.getItems();
   }
 
 }

@@ -19,7 +19,7 @@ public class OrderToXMLDecorator implements OrderInterface {
   @Override
   public String toXML() {
     StringBuffer sBuffer = new StringBuffer();
-    for (ItemInterface movie : order.getRentals()) {
+    for (ItemInterface movie : order.getItems()) {
       sBuffer
           .append("<movie>" + movie.getTitle() + "</movie>" + "<daysRented>" + movie.getDaysRented() + "</daysRented>");
       sBuffer.append("<amount>" + movie.calculateAmount() + "</amount>" + '\n');
@@ -35,8 +35,8 @@ public class OrderToXMLDecorator implements OrderInterface {
   }
 
   @Override
-  public TreeSet<ItemInterface> getRentals() {
-    return order.getRentals();
+  public TreeSet<ItemInterface> getItems() {
+    return order.getItems();
   }
 
 }

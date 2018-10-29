@@ -34,7 +34,7 @@ public class OrderComposite implements OrderInterface {
   public int calculateTotalPoint() {
     int total = 0;
     for (OrderInterface o : orderList) {
-      total += o.calculateTotal();
+      total += o.calculateTotalPoint();
     }
     return total;
   }
@@ -53,10 +53,10 @@ public class OrderComposite implements OrderInterface {
    * intended to be used to get rental days.
    */
   @Override
-  public TreeSet<ItemInterface> getRentals() {
+  public TreeSet<ItemInterface> getItems() {
     TreeSet<ItemInterface> s = new TreeSet<>();
     for (OrderInterface o : orderList) {
-      s.addAll(o.getRentals());
+      s.addAll(o.getItems());
     }
     return s;
   }

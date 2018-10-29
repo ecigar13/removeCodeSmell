@@ -24,7 +24,7 @@ public interface OrderInterface {
    * 
    * @return
    */
-  public TreeSet<ItemInterface> getRentals();
+  public TreeSet<ItemInterface> getItems();
 
   /**
    * Return an XML formatted string. Intended for a decorator. For a composite

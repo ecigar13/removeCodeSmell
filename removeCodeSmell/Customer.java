@@ -38,7 +38,7 @@ public class Customer {
     result.append("You have " + frequentRenterPoints + " point" + "\n");
 
     result.append("Items in cart: \n");
-    for (ItemInterface m : rental.getRentals()) {
+    for (ItemInterface m : rental.getItems()) {
       double thisAmount = 0.0;
       thisAmount += m.calculateAmount();
       result.append(String.format("%30s", m.getTitle()) + "\t\t" + String.format("%6.2f", thisAmount));

@@ -1,12 +1,15 @@
-## Suggested design patterns:
 
- - More classes: extend to get toys, movie, book, cd, dvd. Use inheritance. (possibly factory pattern to generate them)
- - Strategy: each item calculates its own price, so strategy comes inside each object instance.
-	- Renamed Rental to Transaction.
-	- Create inferface strategy -> create concerete classes Rent, Buy
-	- Each item has a strategy -> use setStrategy. This can be set at run time but in the current situation, I opt for setting it in Main.
- - Decorator: discount comes after calculation, so I use decorator to decorate the rentals and buy.
-	- Each rental/buy has its discount. 
-	- Each transaction also has its discount.
- - Composite: maybe it has sth to do with applying mass discount or mass action on multiple orders?
-	- Last one to deal with. Really easy.
+## New Classes
+All items now implement ItemInterface. This allows me to apply discount decorator to items. 
+Movies, Books, Music and Toys have their own abstract class from ItemInterface. This reduce duplicate code in each child class.
+
+## Strategy
+Rent and Buy strategies are in "strategy" package. They change the way the price of each item is calculated.
+
+## Decorator
+The ItemDiscountDecorator class applies discount to individual items of ItemInterface. This affects the price calculation of each item.
+The OrderDiscountDecorator class applies discount to the entire order after calculating. This takes effect in price calculation of the order.
+
+## Composite
+The OrderComposite class can hold multiple orders as leaves. When it prints as XML, this class will return an XML string of all orders inside and individual total.
+
