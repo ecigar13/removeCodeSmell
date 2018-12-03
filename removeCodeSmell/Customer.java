@@ -7,10 +7,17 @@ public class Customer {
   private String name;
   private OrderInterface rental;
   private int frequentRenterPoints;
+  private int freeItems = 0;
 
   public Customer(String name, int frequentRenterPoints) {
     this.name = name;
     this.frequentRenterPoints = frequentRenterPoints;
+  }
+
+  public Customer(String name, int frequentRenterPoints, int freeItems) {
+    this.name = name;
+    this.frequentRenterPoints = frequentRenterPoints;
+    this.freeItems = freeItems;
   }
 
   /**
@@ -25,6 +32,10 @@ public class Customer {
 
   public String getName() {
     return this.name;
+  }
+
+  public int getFreeItems() {
+    return freeItems;
   }
 
   /**
@@ -46,10 +57,16 @@ public class Customer {
       // calculate amounts for each line
     }
 
+    int pointEarned = rental.calculateTotalPoint();
+    frequentRenterPoints += pointEarned;
+    if (frequentRenterPoints > 10)
+      freeItems += 1;
+
     // add footer lines
     result.append(
         String.format("%30s", "Amount owed is ") + "\t\t" + String.format("%6.2f", rental.calculateTotal()) + "\n");
-    result.append("You earned " + String.valueOf(rental.calculateTotalPoint()) + " frequent renter points.\n");
+    result.append("You earned " + pointEarned + " frequent renter points.\n");
+    result.append("You have free rental " + freeItems + " items for next order.");
     return result.toString();
   }
 

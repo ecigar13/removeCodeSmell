@@ -1,7 +1,7 @@
 package itemInterfaces;
 
 import genre.Genre;
-import strategies.StrategyInterface;
+import strategies.ActivityStrategy;
 
 public abstract class BookAbstractClass implements ItemInterface {
   protected String author;
@@ -12,7 +12,7 @@ public abstract class BookAbstractClass implements ItemInterface {
   protected double pricePerDay;
   protected double sellPrice;
 
-  protected StrategyInterface strategy;
+  protected ActivityStrategy strategy;
 
   protected String title;
 
@@ -49,7 +49,7 @@ public abstract class BookAbstractClass implements ItemInterface {
     return sellPrice;
   }
 
-  public StrategyInterface getStrategy() {
+  public ActivityStrategy getStrategy() {
     return strategy;
   }
 
@@ -77,7 +77,7 @@ public abstract class BookAbstractClass implements ItemInterface {
     this.sellPrice = sellPrice;
   }
 
-  public void setStrategy(StrategyInterface strategy) {
+  public void setStrategy(ActivityStrategy strategy) {
     this.strategy = strategy;
   }
 

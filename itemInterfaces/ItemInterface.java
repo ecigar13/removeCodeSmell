@@ -3,7 +3,7 @@ package itemInterfaces;
 import java.util.HashSet;
 
 import genre.Genre;
-import strategies.StrategyInterface;
+import strategies.ActivityStrategy;
 
 public interface ItemInterface extends Comparable<ItemInterface> {
   final HashSet<Genre> genres = new HashSet<Genre>();
@@ -26,5 +26,5 @@ public interface ItemInterface extends Comparable<ItemInterface> {
 
   public boolean isGenre(Genre genre);
 
-  public void setStrategy(StrategyInterface s);
+  public void setStrategy(ActivityStrategy s);
 }

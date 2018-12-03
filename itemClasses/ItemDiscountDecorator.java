@@ -2,7 +2,7 @@ package itemClasses;
 
 import genre.Genre;
 import itemInterfaces.ItemInterface;
-import strategies.StrategyInterface;
+import strategies.ActivityStrategy;
 
 public class ItemDiscountDecorator implements ItemInterface {
   protected ItemInterface item;
@@ -39,7 +39,7 @@ public class ItemDiscountDecorator implements ItemInterface {
   }
 
   @Override
-  public void setStrategy(StrategyInterface s) {
+  public void setStrategy(ActivityStrategy s) {
     item.setStrategy(s);
 
   }

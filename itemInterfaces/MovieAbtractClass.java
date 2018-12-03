@@ -1,7 +1,7 @@
 package itemInterfaces;
 
 import genre.Genre;
-import strategies.StrategyInterface;
+import strategies.ActivityStrategy;
 
 public abstract class MovieAbtractClass implements ItemInterface {
   protected int baseDay;
@@ -11,7 +11,7 @@ public abstract class MovieAbtractClass implements ItemInterface {
 
   protected double sellPrice;
 
-  protected StrategyInterface strategy;
+  protected ActivityStrategy strategy;
 
   protected String title;
 
@@ -40,7 +40,7 @@ public abstract class MovieAbtractClass implements ItemInterface {
     return sellPrice;
   }
 
-  public StrategyInterface getStrategy() {
+  public ActivityStrategy getStrategy() {
     return strategy;
   }
 
@@ -59,7 +59,7 @@ public abstract class MovieAbtractClass implements ItemInterface {
   public void setSellPrice(double sellPrice) {
     this.sellPrice = sellPrice;
   }
-  public void setStrategy(StrategyInterface strategy) {
+  public void setStrategy(ActivityStrategy strategy) {
     this.strategy = strategy;
   }
 

@@ -2,7 +2,7 @@ package strategies;
 
 import itemInterfaces.ItemInterface;
 
-public class BuyStrategy implements StrategyInterface {
+public class BuyStrategy implements ActivityStrategy {
 
   public BuyStrategy() {
   }

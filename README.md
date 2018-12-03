@@ -13,3 +13,9 @@ The OrderDiscountDecorator class applies discount to the entire order after calc
 ## Composite
 The OrderComposite class can hold multiple orders as leaves. When it prints as XML, this class will return an XML string of all orders inside and individual total.
 
+## Frequen renter point strategy
+
+Double regular point to any customer renting more than 2 types of category.
+Double regular point to customer 18-22 renting new release movies. 
+
+If a customer has more than 10 frequent renter points, give them a free movie rental of any type.

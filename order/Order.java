@@ -1,12 +1,16 @@
 package order;
 
 import java.util.TreeSet;
-
 import itemClasses.*;
 import itemInterfaces.ItemInterface;
+import strategies.DefaultPointStrategy;
+import strategies.DoublePointStrategy;
+import strategies.RentalPointStrategy;
 
 public class Order implements OrderInterface {
   private int frequentRenterPoint;
+  private int freeItems = 0;
+  private RentalPointStrategy pointStrategy = new DefaultPointStrategy();
   private TreeSet<ItemInterface> rentals;
 
   public Order() {
@@ -14,18 +18,31 @@ public class Order implements OrderInterface {
     frequentRenterPoint = 0;
   }
 
+  public Order(int freeItems) {
+    this.freeItems = freeItems;
+    this.rentals = new TreeSet<>();
+    this.frequentRenterPoint = 0;
+  }
+
+  /**
+   * Implement HWK 5
+   * 
+   * @param m
+   * @return
+   */
   public boolean addItem(ItemInterface m) {
+    boolean diffCategory = false;
+    if (rentals.size() != 0 && !rentals.getClass().isAssignableFrom(m.getClass().getSuperclass()))
+      diffCategory = true;
+
+    if (m instanceof MovieNew || m instanceof BookNew || diffCategory) {
+      pointStrategy = new DoublePointStrategy();
+    }
     return rentals.add(m);
   }
 
-  public int calculateFrequentRenterPoint(ItemInterface m) {
-    int point = 1;
-
-    // add bonus for a two day new release rental
-    if ((m instanceof MovieNew) && (m.getDaysRented() > 1)) {
-      point++;
-    }
-    return point;
+  public void setFreeItems(int freeItems) {
+    this.freeItems = freeItems;
   }
 
   /**
@@ -40,11 +57,7 @@ public class Order implements OrderInterface {
   }
 
   public int calculateTotalPoint() {
-    int total = 0;
-    for (ItemInterface m : rentals) {
-      total += calculateFrequentRenterPoint(m);
-    }
-    return total;
+    return pointStrategy.calculateTotalPoint(rentals);
   }
 
   public int getFrequentRenterPoint() {
@@ -63,6 +76,8 @@ public class Order implements OrderInterface {
       sBuffer.append("<amount>" + movie.calculateAmount() + "</amount>" + '\n');
     }
 
+    frequentRenterPoint = pointStrategy.calculateTotalPoint(rentals);
+    sBuffer.append("<point>" + frequentRenterPoint + "</point>");
     sBuffer.append("<total>" + calculateTotal() + "</total>");
     return sBuffer.toString();
   }

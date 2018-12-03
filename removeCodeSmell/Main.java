@@ -19,9 +19,9 @@ public class Main {
 
   public static void main(String[] args) {
     // use one of the two lines below
-    // strategyPattern();
+    strategyPattern();
     // strategyAndDecorator();
-    compositePattern();
+    // compositePattern();
 
   }
 
@@ -115,9 +115,14 @@ public class Main {
     // create customer
     Customer customer = new Customer("Thomas", 1);
     // create rental
-    Order rental = new Order();
+    Order rental = new Order(customer.getFreeItems());
+    customer.setRental(rental);
     // create movie
     ItemInterface item = new MovieNew("Starbucks Wars", 3, 20.0, Genre.HORROR, Genre.ROMANCE);
+    item.setStrategy(new RentStrategy());
+    rental.addItem(item);
+
+    item = new MovieNew("Steel Man - Infinity Wars", 3, 20.0, Genre.HORROR, Genre.ROMANCE);
     item.setStrategy(new RentStrategy());
     rental.addItem(item);
 
@@ -125,11 +130,14 @@ public class Main {
     item.setStrategy(new BuyStrategy());
     rental.addItem(item);
 
-    item = new MovieRegular("Chronicles of Nah Nah", 4, 50.0, Genre.ROMANCE, Genre.NERD);
+    item = new MovieRegular("Chronicles of Nah Nah", 4, 10.0, Genre.ROMANCE, Genre.NERD);
     item.setStrategy(new RentStrategy());
     rental.addItem(item);
 
-    customer.setRental(rental);
+    item = new MovieRegular("Baywitch", 3, 23.3, Genre.ROMANCE, Genre.NERD);
+    item.setStrategy(new RentStrategy());
+    rental.addItem(item);
+
     for (ItemInterface i : rental.getItems()) {
       System.out.println(((MovieAbtractClass) i).getStrategy());
     }
@@ -138,6 +146,7 @@ public class Main {
     System.out.println(customer.statement());
     System.out.println();
     System.out.println(customer.toXML());
+    System.out.println();
     System.out.println(rental.toXML());
 
   }

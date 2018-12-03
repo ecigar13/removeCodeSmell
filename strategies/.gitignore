@@ -1,3 +1,9 @@
 /StrategyInterface.class
 /RentStrategy.class
 /BuyStrategy.class
+/ActivityStrategy.class
+/FrequentRentalPointStrategy.class
+/RentalPointStrategy.class
+/RegularRentalPointStrategy.class
+/DefaultPointStrategy.class
+/DoublePointStrategy.class
